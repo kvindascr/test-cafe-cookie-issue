@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "443:443"
+      - "8096:8096"
+    volumes:
+      - ./local-nginx-proxy/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./local-nginx-proxy/ssl/local.myapp.app.crt:/etc/nginx/local.myapp.app.crt
+      - ./local-nginx-proxy/ssl/local.myapp.app.key:/etc/nginx/local.myapp.app.key
+
+networks:
+  nginx:
+    driver: bridge
